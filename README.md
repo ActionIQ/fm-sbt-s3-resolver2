@@ -1,3 +1,17 @@
+AIQ fork of Frugal Mechanic SBT S3 Resolver: https://github.com/tpunder/fm-sbt-s3-resolver
+
+At AIQ, we wish to use SSO as our authentication method to s3 to pull/push artifacts. This is ONLY supported on AWS SDK 2.0 or higher
+
+Forked from this PR: https://github.com/tpunder/fm-sbt-s3-resolver/pulls
+
+NOTES
+- Will only work in us-east-1 due to a workaround
+
+
+
+--------------------ORIGINAL README BELOW-------------------------
+
+
 # Frugal Mechanic SBT S3 Resolver
 
 [![Build and Tests](https://github.com/tpunder/fm-sbt-s3-resolver/actions/workflows/build.yml/badge.svg)](https://github.com/tpunder/fm-sbt-s3-resolver/actions/workflows/build.yml) [![fm-sbt-s3-resolver Scala version support](https://index.scala-lang.org/tpunder/fm-sbt-s3-resolver/fm-sbt-s3-resolver/latest-by-scala-version.svg?targetType=Sbt)](https://index.scala-lang.org/tpunder/fm-sbt-s3-resolver/fm-sbt-s3-resolver)
