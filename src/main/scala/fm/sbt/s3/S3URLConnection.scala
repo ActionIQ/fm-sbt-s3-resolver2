@@ -96,7 +96,7 @@ final class S3URLConnection(url: URL) extends HttpURLConnection(url) {
         case "content-type" => response.contentType()
         case "content-encoding" => response.contentEncoding()
         case "content-length" => response.contentLength().toString
-        case "last-modified" => DateTimeFormatter.RFC_1123_DATE_TIME.format(response.lastModified())
+        case "last-modified" => response.lastModified().toString
         case _ => null // Should return null if no value for header
       }
       case Some(GETResponse(response)) =>
@@ -104,7 +104,7 @@ final class S3URLConnection(url: URL) extends HttpURLConnection(url) {
           case "content-type" => response.response()contentType()
           case "content-encoding" => response.response().contentEncoding()
           case "content-length" => response.response().contentLength().toString
-          case "last-modified" => DateTimeFormatter.RFC_1123_DATE_TIME.format(response.response().lastModified())
+          case "last-modified" => response.response().lastModified().toString
           case _ => null // Should return null if no value for header
         }
       case None => null

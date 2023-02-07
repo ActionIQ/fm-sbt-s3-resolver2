@@ -116,15 +116,11 @@ object S3ResolverPlugin extends AutoPlugin {
           URLHandlerRegistry.setDefault(disp)
           disp
       }
-
       // Register (or replace) the s3 handler
       dispatcher.setDownloader("s3", new S3URLHandler)
-
       val extracted: Extracted = Project.extract(state)
-
       S3URLHandler.registerBucketCredentialsProvider(extracted.getOpt(s3CredentialsProvider).getOrElse(S3URLHandler.defaultCredentialsProviderChain))
       S3URLHandler.registerBucketACLMap(extracted.getOpt(s3ResolverBucketACLMap).getOrElse(Map()))
-
       state
     }
   )

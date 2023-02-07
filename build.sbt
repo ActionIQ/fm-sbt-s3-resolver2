@@ -1,4 +1,5 @@
-name := "fm-sbt-s3-resolver"
+name := "sbt-s3-resolver"
+organization := "co.actioniq"
 
 description := "SBT S3 Resolver Plugin"
 
@@ -33,15 +34,35 @@ scriptedLaunchOpts ++= Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
 
 crossSbtVersions := Vector("0.13.18", "1.1.0")
 
-val amazonSDKVersion = "2.17.261"
+val amazonSDKVersion = "2.19.31"
 
 libraryDependencies ++= Seq(
   "software.amazon.awssdk" % "s3" % amazonSDKVersion,
   "software.amazon.awssdk" % "sts" % amazonSDKVersion,
+  "software.amazon.awssdk" % "sso" % amazonSDKVersion,
+  "software.amazon.awssdk" % "ssooidc" % amazonSDKVersion,
   "org.apache.ivy" % "ivy" % "2.4.0",
   "org.scalatest" %% "scalatest" % "3.2.10" % Test
 )
 
-publishTo := sonatypePublishToBundle.value
 
 ThisBuild / versionScheme := Some("semver-spec")
+
+publishTo := Some("Artifactory Realm" at s"https://actioniq.jfrog.io/artifactory/aiq-sbt-local")
+
+publishMavenStyle := true
+
+publishConfiguration := publishConfiguration.value.withOverwrite(isSnapshot.value)
+
+publishLocalConfiguration := publishLocalConfiguration.value.withOverwrite(isSnapshot.value)
+
+publishM2Configuration := publishM2Configuration.value.withOverwrite(isSnapshot.value)
+
+Compile / packageSrc / publishArtifact := false
+
+Compile / packageDoc / publishArtifact := false
+
+credentials ++= sys.env.get("ARTIFACTORY_ACCESS_TOKEN").toList.map { token =>
+  println("Using Artifactory credentials from environment")
+  Credentials("Artifactory Realm", "actioniq.jfrog.io", sys.env("ARTIFACTORY_USER"), token)
+}

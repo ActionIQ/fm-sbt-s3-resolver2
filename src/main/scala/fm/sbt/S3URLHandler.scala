@@ -483,7 +483,7 @@ final class S3URLHandler extends URLHandler {
   def getRegionNameFromURL(url: URL): Option[String] = {
     // We'll try the AmazonS3URI parsing first then fallback to our RegionMatcher
     //getAmazonS3URI(url).map{ _.getRegion }.flatMap{ Option(_) } orElse RegionMatcher.findFirstIn(url.toString)
-    ???
+    Some("us-east-1")
   }
 
 
