@@ -14,8 +14,7 @@ Non-Snapshot publishes WILL NOT allow existing artifacts to be overwritten.
 - Will only work in us-east-1 due to a workaround
 
 
-
-# --------------------ORIGINAL README BELOW----------------------
+# --------------ORIGINAL README BELOW-----------------
 
 
 # Frugal Mechanic SBT S3 Resolver
