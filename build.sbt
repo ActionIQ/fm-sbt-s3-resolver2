@@ -22,7 +22,7 @@ scalacOptions := Seq(
 ) else Nil)
 
 enablePlugins(SbtPlugin)
-
+// bobingus
 scriptedBufferLog := false
 
 // Don't depend on publishLocal when running "scripted". This allows us to run
