@@ -193,11 +193,11 @@ object S3URLHandler {
     val roleBasedProviders: Vector[AwsCredentialsProvider] = Vector(
       new BucketSpecificRoleBasedEnvironmentVariableCredentialsProvider(basicProviderChain, bucket),
       new BucketSpecificRoleBasedSystemPropertiesCredentialsProvider(basicProviderChain, bucket),
-      new RoleBasedPropertiesFileCredentialsProvider(basicProviderChain, s".s3credentials_${bucket}"),
-      new RoleBasedPropertiesFileCredentialsProvider(basicProviderChain, s".${bucket}_s3credentials"),
+      // new RoleBasedPropertiesFileCredentialsProvider(basicProviderChain, s".s3credentials_${bucket}"),
+      // new RoleBasedPropertiesFileCredentialsProvider(basicProviderChain, s".${bucket}_s3credentials"),
       new RoleBasedEnvironmentVariableCredentialsProvider(basicProviderChain),
       new RoleBasedSystemPropertiesCredentialsProvider(basicProviderChain),
-      new RoleBasedPropertiesFileCredentialsProvider(basicProviderChain, s".s3credentials")
+      // new RoleBasedPropertiesFileCredentialsProvider(basicProviderChain, s".s3credentials")
     )
 
     AwsCredentialsProviderChain.builder().credentialsProviders((roleBasedProviders ++ basicProviders): _*).build()
